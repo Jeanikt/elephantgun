@@ -264,7 +264,7 @@ export default function Component() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="w-[200px] md:w-[300px] group">
+                    <div className="w-[200px] md:w-[350px] group">
                       <div className="relative aspect-[3/4] mb-4 bg-gray-100 dark:bg-gray-900 overflow-hidden group">
                         <Image
                           src={
@@ -507,7 +507,10 @@ export default function Component() {
             ALL RIGHTS RESERVED
           </div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 font-mono text-sm">
-            <Link href="#" className="hover:underline underline-offset-4">
+            <Link
+              href="https://www.instagram.com/eelephantgun/"
+              className="hover:underline underline-offset-4"
+            >
               INSTAGRAM
             </Link>
             <Link href="#" className="hover:underline underline-offset-4">
