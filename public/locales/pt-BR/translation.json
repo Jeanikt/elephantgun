@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "products": "Produtos",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "hero": {
+    "title": "ECO\nDESIGN\n2024©",
+    "subtitle": "Neubautonomy em Tipo e Design. Design para Designer",
+    "image_alt": "Cabeçalho ELEPHANTGUN™"
+  },
+  "products": {
+    "subtitle1": "001",
+    "subtitle2": "ECOBAGS 2024",
+    "subtitle3": "ARQUIVO - 001/004",
+    "scroll": "ROLE PARA VER MAIS",
+    "1": {
+      "name": "BAGUNÇADO",
+      "description": "ECO-001 / EDIÇÃO LIMITADA"
+    },
+    "2": {
+      "name": "DIAS PUNK",
+      "description": "ECO-002 / EDIÇÃO LIMITADA"
+    },
+    "3": {
+      "name": "QUERIA QUE VOCÊ ESTIVESSE AQUI",
+      "description": "ECO-003 / EDIÇÃO LIMITADA"
+    },
+    "4": {
+      "name": "DEPOIS DE VOCÊ",
+      "description": "ECO-004 / EDIÇÃO LIMITADA"
+    }
+  },
+  "about": {
+    "title": "SOBRE NÓS",
+    "paragraph1": "Elephantgun, fundada em 2020, surgiu de um caderno pessoal. Somos uma marca eco-consciente comprometida em beneficiar o planeta enquanto oferecemos um estilo único e autêntico.",
+    "paragraph2": "Nossa coleção contínua, \"SE VOCÊ É ENGRAÇADO OU ESTRANHO\", apresenta ECObags 45x45 pintadas à mão por Bianca (ela/dela). Cada BaG Elephantgun é tão única quanto você, com lançamentos aleatórios ao longo da semana.",
+    "paragraph3": "Oferecemos três modelos de ECObag: a tradicional 45x45, uma à prova d'água 36x30 com alça ajustável e a versátil \"BOLSA ELEPHANTGUN\" com dois compartimentos com zíper.",
+    "paragraph4": "Na Elephantgun, acreditamos que até mesmo pequenas ações podem levar a um futuro melhor. Pensando nos outros, nos tornamos pessoas melhores.",
+    "materials": {
+      "title": "MATERIAIS",
+      "description": "100% Ecológico"
+    },
+    "design": {
+      "title": "DESIGN",
+      "description": "Pintado à Mão & Único"
+    },
+    "production": {
+      "title": "PRODUÇÃO",
+      "description": "Lançamentos Limitados"
+    },
+    "impact": {
+      "title": "IMPACTO",
+      "description": "Eco-Consciente"
+    }
+  },
+  "newsletter": {
+    "title": "NEWSLETTER",
+    "placeholder": "Endereço de Email",
+    "button": "INSCREVER-SE"
+  },
+  "manifesto": {
+    "title": "ECO\nDESIGN\n2024",
+    "subtitle": "MANIFESTO 01",
+    "description": "DESIGN ENCONTRA SUSTENTABILIDADE. CADA BOLSA É UMA DECLARAÇÃO DE RESPONSABILIDADE ECOLÓGICA.",
+    "collection": "COLEÇÃO DE DESIGN SUSTENTÁVEL 2024©",
+    "zero_waste": "ZERO DESPERDÍCIO",
+    "ecological": "100% ECOLÓGICO",
+    "sustainable": "MATERIAIS SUSTENTÁVEIS",
+    "minimal_waste": "DESPERDÍCIO MÍNIMO",
+    "conscious_design": "DESIGN CONSCIENTE"
+  },
+  "footer": {
+    "rights": "TODOS OS DIREITOS RESERVADOS",
+    "instagram": "INSTAGRAM",
+    "twitter": "TWITTER",
+    "privacy": "PRIVACIDADE",
+    "terms": "TERMOS",
+    "image_alt": "Elemento de design do rodapé"
+  },
+  "language": {
+    "toggle": "Alternar idioma"
+  },
+  "theme": {
+    "toggle": "Alternar tema"
+  },
+  "menu": {
+    "toggle": "Alternar menu"
+  }
+}

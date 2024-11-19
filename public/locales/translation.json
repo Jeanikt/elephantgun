@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "ECO\nDESIGN\n2024©",
+    "subtitle": "Neubautonomy in Type & Design. Design for Designer",
+    "image_alt": "ELEPHANTGUN™ Header"
+  },
+  "products": {
+    "subtitle1": "001",
+    "subtitle2": "ECOBAGS 2024",
+    "subtitle3": "ARCHIVE - 001/004",
+    "scroll": "SCROLL FOR MORE",
+    "1": {
+      "name": "MESSY",
+      "description": "ECO-001 / LIMITED EDITION"
+    },
+    "2": {
+      "name": "PUNK DAYS",
+      "description": "ECO-002 / LIMITED EDITION"
+    },
+    "3": {
+      "name": "WISH YOU WERE HERE",
+      "description": "ECO-003 / LIMITED EDITION"
+    },
+    "4": {
+      "name": "AFTER YOU",
+      "description": "ECO-004 / LIMITED EDITION"
+    }
+  },
+  "about": {
+    "title": "ABOUT US",
+    "paragraph1": "Elephantgun, founded in 2020, emerged from a personal notebook. We're an eco-conscious brand committed to benefiting the planet while offering a unique, authentic style.",
+    "paragraph2": "Our ongoing collection, \"IF YOU'RE FUNNY OR WEIRD\", features 45x45 ECObags hand-painted by Bianca (she/her). Each Elephantgun BaG is as unique as you are, with random drops throughout the week.",
+    "paragraph3": "We offer three ECObag models: the traditional 45x45, a waterproof 36x30 with adjustable strap, and the versatile \"BOLSA ELEPHANTGUN\" with two zippered compartments.",
+    "paragraph4": "At Elephantgun, we believe that even small actions can lead to a better future. By thinking of others, we become better people.",
+    "materials": {
+      "title": "MATERIALS",
+      "description": "100% Ecological"
+    },
+    "design": {
+      "title": "DESIGN",
+      "description": "Hand-painted & Unique"
+    },
+    "production": {
+      "title": "PRODUCTION",
+      "description": "Limited Drops"
+    },
+    "impact": {
+      "title": "IMPACT",
+      "description": "Eco-Conscious"
+    }
+  },
+  "newsletter": {
+    "title": "NEWSLETTER",
+    "placeholder": "Email Address",
+    "button": "SUBSCRIBE"
+  },
+  "manifesto": {
+    "title": "ECO\nDESIGN\n2024",
+    "subtitle": "MANIFESTO 01",
+    "description": "DESIGN MEETS SUSTAINABILITY. EACH BAG IS A STATEMENT OF ECOLOGICAL RESPONSIBILITY.",
+    "collection": "SUSTAINABLE DESIGN COLLECTION 2024©",
+    "zero_waste": "ZERO WASTE",
+    "ecological": "100% ECOLOGICAL",
+    "sustainable": "SUSTAINABLE MATERIALS",
+    "minimal_waste": "MINIMAL WASTE",
+    "conscious_design": "CONSCIOUS DESIGN"
+  },
+  "footer": {
+    "rights": "ALL RIGHTS RESERVED",
+    "instagram": "INSTAGRAM",
+    "twitter": "TWITTER",
+    "privacy": "PRIVACY",
+    "terms": "TERMS",
+    "image_alt": "Footer design element"
+  },
+  "language": {
+    "toggle": "Toggle language"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  },
+  "menu": {
+    "toggle": "Toggle menu"
+  }
+}

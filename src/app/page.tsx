@@ -22,6 +22,8 @@ import whishyou from "../../public/img/“WISH YOU WERE HERE”.jpg";
 import bag_whishyou from "../../public/img/“WISH YOU WERE HERE”, BAG.png";
 import afteryou from "../../public/img/Style, AFTER YOU.jpg";
 import bag_afteryou from "../../public/img/Style, AFTER YOU, BaG.jpg";
+import header_img from "../../public/img/HEADER.jpg";
+import footer_img from "../../public/img/FOOTER.jpg";
 
 const languages = [
   { code: "en", name: "English" },
@@ -226,7 +228,15 @@ export default function Component() {
               </p>
             </div>
           </div>
-          <div className="bg-[url('/placeholder.svg')] bg-cover bg-center border-t md:border-t-0 md:border-l border-black dark:border-white min-h-[50vh] md:min-h-[unset]" />
+          <div className="relative border-t md:border-t-0 md:border-l border-black dark:border-white min-h-[50vh] md:min-h-[unset]">
+            <Image
+              src={header_img}
+              alt="ELEPHANTGUN™ Header"
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+          </div>
         </section>
 
         <section
@@ -255,7 +265,7 @@ export default function Component() {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="w-[200px] md:w-[300px] group">
-                      <div className="relative aspect-[3/4] mb-4 bg-gray-100 dark:bg-gray-900">
+                      <div className="relative aspect-[3/4] mb-4 bg-gray-100 dark:bg-gray-900 overflow-hidden group">
                         <Image
                           src={
                             activeId === product.id
@@ -264,7 +274,7 @@ export default function Component() {
                           }
                           alt={product.name}
                           fill
-                          className="object-cover transition-all duration-300"
+                          className="object-cover transition-all duration-300 grayscale group-hover:grayscale-0"
                         />
                       </div>
                       <div className="font-mono space-y-2">
@@ -316,12 +326,29 @@ export default function Component() {
               <h2 className="font-mono text-3xl sm:text-4xl md:text-6xl tracking-tighter mb-8">
                 ABOUT US
               </h2>
-              <p className="font-mono text-sm max-w-xl">
-                elephantgun is a sustainable design studio focused on creating
-                eco-friendly bags and accessories. Our products are made with
-                100% ecological materials, emphasizing both environmental
-                responsibility and contemporary design aesthetics.
-              </p>
+              <div className="font-mono text-sm max-w-xl space-y-4">
+                <p>
+                  Elephantgun, founded in 2020, emerged from a personal
+                  notebook. We're an eco-conscious brand committed to benefiting
+                  the planet while offering a unique, authentic style.
+                </p>
+                <p>
+                  Our ongoing collection, "IF YOU'RE FUNNY OR WEIRD", features
+                  45x45 ECObags hand-painted by Bianca (she/her). Each
+                  Elephantgun BaG is as unique as you are, with random drops
+                  throughout the week.
+                </p>
+                <p>
+                  We offer three ECObag models: the traditional 45x45, a
+                  waterproof 36x30 with adjustable strap, and the versatile
+                  "BOLSA ELEPHANTGUN" with two zippered compartments.
+                </p>
+                <p>
+                  At Elephantgun, we believe that even small actions can lead to
+                  a better future. By thinking of others, we become better
+                  people.
+                </p>
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-2 divide-x divide-y divide-black dark:divide-white">
@@ -334,19 +361,19 @@ export default function Component() {
             <div className="p-8 border-t md:border-t-0">
               <div className="floating" data-speed="1.0">
                 <h3 className="font-mono text-sm mb-2">DESIGN</h3>
-                <p className="font-mono text-xs">Minimalist</p>
+                <p className="font-mono text-xs">Hand-painted & Unique</p>
               </div>
             </div>
             <div className="p-8">
               <div className="floating" data-speed="1.1">
                 <h3 className="font-mono text-sm mb-2">PRODUCTION</h3>
-                <p className="font-mono text-xs">Sustainable</p>
+                <p className="font-mono text-xs">Limited Drops</p>
               </div>
             </div>
             <div className="p-8">
               <div className="floating" data-speed="1.2">
                 <h3 className="font-mono text-sm mb-2">IMPACT</h3>
-                <p className="font-mono text-xs">Zero Waste</p>
+                <p className="font-mono text-xs">Eco-Conscious</p>
               </div>
             </div>
           </div>
@@ -459,11 +486,11 @@ export default function Component() {
               <div className="col-span-12 md:col-span-6 lg:col-span-4 lg:col-start-9">
                 <div className="floating" data-speed="0.9">
                   <Image
-                    src="/placeholder.svg"
+                    src={footer_img}
                     alt="Abstract design element"
                     width={300}
                     height={300}
-                    className="w-full grayscale"
+                    className="w-full transition-all duration-300 grayscale hover:grayscale-0"
                   />
                 </div>
               </div>
