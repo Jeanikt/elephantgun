@@ -1,22 +1,20 @@
-import { ThemeProvider, LanguageProvider } from "./providers";
-import "./globals.css";
+"use client";
 
-export const metadata = {
-  title: "Elephangun",
-  description: "ECO.",
-};
+import { ThemeProvider } from "./providers";
+import { useTheme } from "next-themes";
+import "./globals.css";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { theme } = useTheme();
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme || undefined}>
       <body>
-        <ThemeProvider>
-          <LanguageProvider>{children}</LanguageProvider>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

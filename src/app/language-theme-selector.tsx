@@ -1,6 +1,8 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/app/providers";
-import { Button } from "@/components/ui/button"; // Supondo que Button seja um componente customizado
+import { Button } from "@/components/ui/button";
 import { Globe, Moon, Sun } from "lucide-react";
 import {
   DropdownMenu,
@@ -22,7 +24,6 @@ export default function LanguageThemeSelector() {
 
   return (
     <div className="flex items-center space-x-4">
-      {/* Dropdown para escolher o idioma */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -48,7 +49,6 @@ export default function LanguageThemeSelector() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Botão para alternar o tema */}
       <Button
         variant="outline"
         size="icon"

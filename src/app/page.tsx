@@ -1,98 +1,110 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Menu, X, ArrowRight, Globe, Moon, Sun } from 'lucide-react'
-import { useTheme, useLanguage } from './providers'
-import { Button } from "@/components/ui/button"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X, ArrowRight, Globe, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useLanguage } from "./providers";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { motion } from 'framer-motion'
+} from "@/components/ui/dropdown-menu";
+import { motion } from "framer-motion";
+import bag_messy from "../../public/img/“MESSY”, BaG.jpg";
+import messy from "../../public/img/“MESSY”.jpg";
+import punkdays from "../../public/img/“PUNK DAyS”.jpg";
+import bag_punkdays from "../../public/img/“PUNK DAyS”, BaG.jpg";
+import whishyou from "../../public/img/“WISH YOU WERE HERE”.jpg";
+import bag_whishyou from "../../public/img/“WISH YOU WERE HERE”, BAG.png";
+import afteryou from "../../public/img/Style, AFTER YOU.jpg";
+import bag_afteryou from "../../public/img/Style, AFTER YOU, BaG.jpg";
 
 const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'pt-BR', name: 'Português (BR)' },
-  { code: 'es', name: 'Español' },
-  { code: 'fr', name: 'Français' },
-]
+  { code: "en", name: "English" },
+  { code: "pt-BR", name: "Português (BR)" },
+  { code: "es", name: "Español" },
+  { code: "fr", name: "Français" },
+];
 
 const products = [
   {
     id: 1,
-    name: 'Classic Tote',
-    image: '/placeholder.svg',
-    price: '€120',
-    description: 'ECO-001 / LIMITED EDITION'
+    name: "MESSY",
+    image: messy,
+    bagImage: bag_messy,
+    price: "€120",
+    description: "ECO-001 / LIMITED EDITION",
   },
   {
     id: 2,
-    name: 'Daily Messenger',
-    image: '/placeholder.svg',
-    price: '€150',
-    description: 'ECO-002 / LIMITED EDITION'
+    name: "PUNK DAYS",
+    image: punkdays,
+    bagImage: bag_punkdays,
+    price: "€150",
+    description: "ECO-002 / LIMITED EDITION",
   },
   {
     id: 3,
-    name: 'Urban Backpack',
-    image: '/placeholder.svg',
-    price: '€180',
-    description: 'ECO-003 / LIMITED EDITION'
+    name: "WISH YOU WERE HERE",
+    image: whishyou,
+    bagImage: bag_whishyou,
+    price: "€180",
+    description: "ECO-003 / LIMITED EDITION",
   },
   {
     id: 4,
-    name: 'Mini Tote',
-    image: '/placeholder.svg',
-    price: '€90',
-    description: 'ECO-004 / LIMITED EDITION'
+    name: "AFTER YOU",
+    image: afteryou,
+    bagImage: bag_afteryou,
+    price: "€200",
+    description: "ECO-004 / LIMITED EDITION",
   },
-  {
-    id: 5,
-    name: 'Weekend Duffle',
-    image: '/placeholder.svg',
-    price: '€200',
-    description: 'ECO-005 / LIMITED EDITION'
-  }
-]
+];
 
 export default function Component() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const { language, setLanguage } = useLanguage()
-  const [isLangOpen, setIsLangOpen] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [activeId, setActiveId] = useState<number | null>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const { language, setLanguage } = useLanguage();
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
-      const { clientX, clientY } = e
-      const { left, top, width, height } = containerRef.current.getBoundingClientRect()
-      const x = (clientX - left) / width - 0.5
-      const y = (clientY - top) / height - 0.5
-      
-      const elements = document.getElementsByClassName('floating')
-      Array.from(elements).forEach((el) => {
-        const speed = parseFloat(el.getAttribute('data-speed') || '1')
-        const htmlEl = el as HTMLElement
-        htmlEl.style.transform = `translate(${x * 20 * speed}px, ${y * 20 * speed}px)`
-      })
-    }
+      if (!containerRef.current) return;
+      const { clientX, clientY } = e;
+      const { left, top, width, height } =
+        containerRef.current.getBoundingClientRect();
+      const x = (clientX - left) / width - 0.5;
+      const y = (clientY - top) / height - 0.5;
 
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+      const elements = document.getElementsByClassName("floating");
+      Array.from(elements).forEach((el) => {
+        const speed = parseFloat(el.getAttribute("data-speed") || "1");
+        const htmlEl = el as HTMLElement;
+        htmlEl.style.transform = `translate(${x * 20 * speed}px, ${
+          y * 20 * speed
+        }px)`;
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black" ref={containerRef}>
+    <div
+      className="min-h-screen bg-white dark:bg-black text-black dark:text-white selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black"
+      ref={containerRef}
+    >
       <header className="fixed w-full bg-white dark:bg-black z-50 border-b border-black dark:border-white">
         <div className="container mx-auto">
           <nav className="flex items-center justify-between p-4">
@@ -100,20 +112,33 @@ export default function Component() {
               ELEPHANTGUN™
             </Link>
             <div className="hidden md:flex space-x-8 font-mono">
-              <Link href="#products" className="hover:underline underline-offset-4">
+              <Link
+                href="#products"
+                className="hover:underline underline-offset-4"
+              >
                 PRODUCTS
               </Link>
-              <Link href="#about" className="hover:underline underline-offset-4">
+              <Link
+                href="#about"
+                className="hover:underline underline-offset-4"
+              >
                 ABOUT
               </Link>
-              <Link href="#contact" className="hover:underline underline-offset-4">
+              <Link
+                href="#contact"
+                className="hover:underline underline-offset-4"
+              >
                 CONTACT
               </Link>
             </div>
             <div className="flex items-center space-x-4">
               <DropdownMenu open={isLangOpen} onOpenChange={setIsLangOpen}>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="icon" className="border-black dark:border-white">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-black dark:border-white"
+                  >
                     <Globe className="h-[1.2rem] w-[1.2rem]" />
                     <span className="sr-only">Toggle language</span>
                   </Button>
@@ -123,8 +148,8 @@ export default function Component() {
                     <DropdownMenuItem
                       key={lang.code}
                       onClick={() => {
-                        setLanguage(lang.code as 'en' | 'pt-BR' | 'es' | 'fr')
-                        setIsLangOpen(false)
+                        setLanguage(lang.code as "en" | "pt-BR" | "es" | "fr");
+                        setIsLangOpen(false);
                       }}
                     >
                       {lang.name}
@@ -132,8 +157,13 @@ export default function Component() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button variant="outline" size="icon" onClick={toggleTheme} className="border-black dark:border-white">
-                {theme === 'light' ? (
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                className="border-black dark:border-white"
+              >
+                {theme === "light" ? (
                   <Moon className="h-[1.2rem] w-[1.2rem]" />
                 ) : (
                   <Sun className="h-[1.2rem] w-[1.2rem]" />
@@ -145,20 +175,33 @@ export default function Component() {
                 className="md:hidden"
                 aria-label="Toggle menu"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </nav>
           {isMenuOpen && (
             <div className="md:hidden border-t border-black dark:border-white">
               <div className="flex flex-col font-mono">
-                <Link href="#products" className="p-4 border-b border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
+                <Link
+                  href="#products"
+                  className="p-4 border-b border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                >
                   PRODUCTS
                 </Link>
-                <Link href="#about" className="p-4 border-b border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
+                <Link
+                  href="#about"
+                  className="p-4 border-b border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                >
                   ABOUT
                 </Link>
-                <Link href="#contact" className="p-4 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">
+                <Link
+                  href="#contact"
+                  className="p-4 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                >
                   CONTACT
                 </Link>
               </div>
@@ -186,14 +229,17 @@ export default function Component() {
           <div className="bg-[url('/placeholder.svg')] bg-cover bg-center border-t md:border-t-0 md:border-l border-black dark:border-white min-h-[50vh] md:min-h-[unset]" />
         </section>
 
-        <section id="products" className="py-16 border-b border-black dark:border-white">
+        <section
+          id="products"
+          className="py-16 border-b border-black dark:border-white"
+        >
           <div className="container mx-auto px-4">
             <div className="mb-12 font-mono">
               <p className="text-xs mb-1">001</p>
               <p className="text-xs mb-1">ECOBAGS 2024</p>
-              <p className="text-xs">ARCHIVE - 001/005</p>
+              <p className="text-xs">ARCHIVE - 001/004</p>
             </div>
-            
+
             <div className="relative overflow-x-auto pb-8">
               <div className="flex space-x-4 md:space-x-8 min-w-max">
                 {products.map((product) => (
@@ -204,24 +250,28 @@ export default function Component() {
                     onHoverEnd={() => setActiveId(null)}
                     animate={{
                       scale: activeId === product.id ? 1.05 : 1,
-                      zIndex: activeId === product.id ? 10 : 0
+                      zIndex: activeId === product.id ? 10 : 0,
                     }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className="w-[200px] md:w-[300px] group">
                       <div className="relative aspect-[3/4] mb-4 bg-gray-100 dark:bg-gray-900">
                         <Image
-                          src={product.image}
+                          src={
+                            activeId === product.id
+                              ? product.bagImage
+                              : product.image
+                          }
                           alt={product.name}
                           fill
-                          className="object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                          className="object-cover transition-all duration-300"
                         />
                       </div>
                       <div className="font-mono space-y-2">
                         <motion.p
                           className="text-xs"
                           animate={{
-                            opacity: activeId === product.id ? 1 : 0.6
+                            opacity: activeId === product.id ? 1 : 0.6,
                           }}
                         >
                           {product.name}
@@ -229,7 +279,7 @@ export default function Component() {
                         <motion.p
                           className="text-xs"
                           animate={{
-                            opacity: activeId === product.id ? 1 : 0.6
+                            opacity: activeId === product.id ? 1 : 0.6,
                           }}
                         >
                           {product.price}
@@ -237,7 +287,7 @@ export default function Component() {
                         <motion.p
                           className="text-xs"
                           animate={{
-                            opacity: activeId === product.id ? 1 : 0.6
+                            opacity: activeId === product.id ? 1 : 0.6,
                           }}
                         >
                           {product.description}
@@ -247,9 +297,9 @@ export default function Component() {
                   </motion.div>
                 ))}
               </div>
-              
+
               <div className="absolute bottom-0 left-0 w-full h-px bg-black dark:bg-white opacity-20" />
-              
+
               <div className="absolute bottom-2 right-0 font-mono text-xs">
                 <span className="opacity-60">SCROLL FOR MORE</span>
               </div>
@@ -257,14 +307,20 @@ export default function Component() {
           </div>
         </section>
 
-        <section id="about" className="grid grid-cols-1 md:grid-cols-2 border-b border-black dark:border-white">
+        <section
+          id="about"
+          className="grid grid-cols-1 md:grid-cols-2 border-b border-black dark:border-white"
+        >
           <div className="p-8 md:p-16 border-b md:border-b-0 md:border-r border-black dark:border-white">
             <div className="floating" data-speed="1.3">
-              <h2 className="font-mono text-3xl sm:text-4xl md:text-6xl tracking-tighter mb-8">ABOUT US</h2>
+              <h2 className="font-mono text-3xl sm:text-4xl md:text-6xl tracking-tighter mb-8">
+                ABOUT US
+              </h2>
               <p className="font-mono text-sm max-w-xl">
-                elephantgun is a sustainable design studio focused on creating eco-friendly bags and accessories.
-                Our products are made with 100% ecological materials, emphasizing both environmental responsibility
-                and contemporary design aesthetics.
+                elephantgun is a sustainable design studio focused on creating
+                eco-friendly bags and accessories. Our products are made with
+                100% ecological materials, emphasizing both environmental
+                responsibility and contemporary design aesthetics.
               </p>
             </div>
           </div>
@@ -296,7 +352,10 @@ export default function Component() {
           </div>
         </section>
 
-        <section id="contact" className="p-8 md:p-16 border-b border-black dark:border-white">
+        <section
+          id="contact"
+          className="p-8 md:p-16 border-b border-black dark:border-white"
+        >
           <div className="max-w-2xl mx-auto text-center">
             <div className="floating" data-speed="0.7">
               <h2 className="font-mono text-xl mb-8">NEWSLETTER</h2>
@@ -319,7 +378,7 @@ export default function Component() {
 
         <section className="relative overflow-hidden border-b border-black dark:border-white">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('/placeholder.svg')] opacity-5" />
-          
+
           <div className="container mx-auto px-4 py-16 md:py-32">
             <div className="grid grid-cols-12 gap-4 mb-16">
               <div className="col-span-12 md:col-span-6 lg:col-span-4">
@@ -333,13 +392,14 @@ export default function Component() {
                   </h2>
                 </div>
               </div>
-              
+
               <div className="col-span-12 md:col-span-6 lg:col-span-4 lg:col-start-7">
                 <div className="floating" data-speed="1.2">
                   <div className="rotate-[-5deg] bg-black dark:bg-white text-white dark:text-black p-6 font-mono">
                     <p className="text-sm mb-2">MANIFESTO 01</p>
                     <p className="text-xs">
-                      DESIGN MEETS SUSTAINABILITY. EACH BAG IS A STATEMENT OF ECOLOGICAL RESPONSIBILITY.
+                      DESIGN MEETS SUSTAINABILITY. EACH BAG IS A STATEMENT OF
+                      ECOLOGICAL RESPONSIBILITY.
                     </p>
                   </div>
                 </div>
@@ -352,7 +412,7 @@ export default function Component() {
                   <div className="aspect-square bg-black dark:bg-white" />
                 </div>
               </div>
-              
+
               <div className="col-span-6 md:col-span-4 md:col-start-7">
                 <div className="floating" data-speed="1.3">
                   <p className="font-mono text-xs transform rotate-90 origin-left translate-y-32">
@@ -395,7 +455,7 @@ export default function Component() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="col-span-12 md:col-span-6 lg:col-span-4 lg:col-start-9">
                 <div className="floating" data-speed="0.9">
                   <Image
@@ -436,5 +496,5 @@ export default function Component() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
