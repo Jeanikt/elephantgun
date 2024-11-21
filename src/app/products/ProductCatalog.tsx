@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useLanguage } from "../providers";
-import { Menu, X, Globe, Moon, Sun, Search } from "lucide-react";
+import { Menu, X, Globe, Moon, Sun, Search, ShoppingCart } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -36,6 +36,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { Badge } from "@/components/ui/badge";
 
 import bag_messy from "../../../public/img/“MESSY”, BaG.jpg";
 import messy from "../../../public/img/“MESSY”.jpg";
@@ -45,7 +46,6 @@ import whishyou from "../../../public/img/“WISH YOU WERE HERE”.jpg";
 import bag_whishyou from "../../../public/img/“WISH YOU WERE HERE”, BAG.png";
 import afteryou from "../../../public/img/Style, AFTER YOU.jpg";
 import bag_afteryou from "../../../public/img/Style, AFTER YOU, BaG.jpg";
-
 
 const products = [
   {
@@ -87,7 +87,7 @@ export default function ProductCatalog() {
   const [selectedProduct, setSelectedProduct] = useState<
     (typeof products)[0] | null
   >(null);
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -173,17 +173,6 @@ export default function ProductCatalog() {
             <Link href="/" className="text-2xl tracking-widest font-mono">
               ELEPHANTGUN™
             </Link>
-            <div className="hidden md:flex space-x-8 font-mono">
-              <Link
-                href="/products"
-                className="hover:underline underline-offset-4"
-              >
-                PRODUCTS
-              </Link>
-              <Link href="/cart" className="hover:underline underline-offset-4">
-                CART
-              </Link>
-            </div>
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <Button
@@ -198,6 +187,24 @@ export default function ProductCatalog() {
                   </kbd>
                 </Button>
               </div>
+              <Link href="/cart">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="border-black dark:border-white relative"
+                >
+                  <ShoppingCart className="h-[1.2rem] w-[1.2rem]" />
+                  <span className="sr-only">View Cart</span>
+                  {cart.length > 0 && (
+                    <Badge
+                      variant="destructive"
+                      className="absolute -top-2 -right-2 px-2 py-1 text-xs"
+                    >
+                      {cart.length}
+                    </Badge>
+                  )}
+                </Button>
+              </Link>
               <DropdownMenu open={isLangOpen} onOpenChange={setIsLangOpen}>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -252,12 +259,6 @@ export default function ProductCatalog() {
           {isMenuOpen && (
             <div className="md:hidden border-t border-black dark:border-white">
               <div className="flex flex-col font-mono">
-                <Link
-                  href="/products"
-                  className="p-4 border-b border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-                >
-                  PRODUCTS
-                </Link>
                 <Link
                   href="/cart"
                   className="p-4 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
@@ -416,7 +417,7 @@ export default function ProductCatalog() {
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -50, opacity: 0 }}
-                className="bg-white dark:bg-zinc-950 p-8 rounded-lg max-w-lg w-full mx-4"
+                className="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg max-w-lg w-full mx-4 shadow-xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Input
@@ -426,14 +427,14 @@ export default function ProductCatalog() {
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setSearchTerm(e.target.value)
                   }
-                  className="w-full mb-4"
+                  className="w-full mb-4 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-black dark:focus:ring-white"
                   autoFocus
                 />
                 <div className="max-h-96 overflow-y-auto">
                   {filteredProducts.map((product) => (
                     <div
                       key={product.id}
-                      className="flex items-center space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer"
+                      className="flex items-center space-x-4 p-2 hover:bg-white dark:hover:bg-gray-800 cursor-pointer rounded transition-colors duration-200"
                       onClick={() => {
                         setSelectedProduct(product);
                         setIsSearchOpen(false);
@@ -459,14 +460,6 @@ export default function ProductCatalog() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <div className="mt-16">
-          <Link href="/cart">
-            <Button className="bg-black text-white dark:bg-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white border border-black dark:border-white transition-colors">
-              View Cart
-            </Button>
-          </Link>
-        </div>
       </main>
     </div>
   );

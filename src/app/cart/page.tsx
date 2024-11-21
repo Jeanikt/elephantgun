@@ -52,9 +52,9 @@ export default function Cart() {
               >
                 PRODUCTS
               </Link>
-              <Link href="/cart" className="hover:underline underline-offset-4">
+              {/* <Link href="/cart" className="hover:underline underline-offset-4">
                 CART
-              </Link>
+              </Link> */}
             </div>
             <div className="flex items-center space-x-4">
               <DropdownMenu open={isLangOpen} onOpenChange={setIsLangOpen}>
