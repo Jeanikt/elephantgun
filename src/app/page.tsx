@@ -25,6 +25,7 @@ import bag_afteryou from "../../public/img/Style, AFTER YOU, BaG.jpg";
 import header_img from "../../public/img/HEADER.jpg";
 import footer_img from "../../public/img/FOOTER.jpg";
 
+
 const languages = [
   { code: "en", name: "English" },
   { code: "pt-BR", name: "Português (BR)" },
@@ -115,7 +116,7 @@ export default function Component() {
             </Link>
             <div className="hidden md:flex space-x-8 font-mono">
               <Link
-                href="#products"
+                href="/products"
                 className="hover:underline underline-offset-4"
               >
                 PRODUCTS
@@ -189,7 +190,7 @@ export default function Component() {
             <div className="md:hidden border-t border-black dark:border-white">
               <div className="flex flex-col font-mono">
                 <Link
-                  href="#products"
+                  href="/products"
                   className="p-4 border-b border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                 >
                   PRODUCTS
@@ -253,58 +254,59 @@ export default function Component() {
             <div className="relative overflow-x-auto pb-8">
               <div className="flex space-x-4 md:space-x-8 min-w-max">
                 {products.map((product) => (
-                  <motion.div
-                    key={product.id}
-                    className="relative flex-none"
-                    onHoverStart={() => setActiveId(product.id)}
-                    onHoverEnd={() => setActiveId(null)}
-                    animate={{
-                      scale: activeId === product.id ? 1.05 : 1,
-                      zIndex: activeId === product.id ? 10 : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="w-[200px] md:w-[350px] group">
-                      <div className="relative aspect-[3/4] mb-4 bg-gray-100 dark:bg-gray-900 overflow-hidden group">
-                        <Image
-                          src={
-                            activeId === product.id
-                              ? product.bagImage
-                              : product.image
-                          }
-                          alt={product.name}
-                          fill
-                          className="object-cover transition-all duration-300 grayscale group-hover:grayscale-0"
-                        />
+                  <Link href={`/products/${product.id}`} key={product.id}>
+                    <motion.div
+                      className="relative flex-none"
+                      onHoverStart={() => setActiveId(product.id)}
+                      onHoverEnd={() => setActiveId(null)}
+                      animate={{
+                        scale: activeId === product.id ? 1.05 : 1,
+                        zIndex: activeId === product.id ? 10 : 0,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="w-[200px] md:w-[350px] group">
+                        <div className="relative aspect-[3/4] mb-4 bg-gray-100 dark:bg-gray-900 overflow-hidden group">
+                          <Image
+                            src={
+                              activeId === product.id
+                                ? product.bagImage
+                                : product.image
+                            }
+                            alt={product.name}
+                            fill
+                            className="object-cover transition-all duration-300 grayscale group-hover:grayscale-0"
+                          />
+                        </div>
+                        <div className="font-mono space-y-2">
+                          <motion.p
+                            className="text-xs"
+                            animate={{
+                              opacity: activeId === product.id ? 1 : 0.6,
+                            }}
+                          >
+                            {product.name}
+                          </motion.p>
+                          <motion.p
+                            className="text-xs"
+                            animate={{
+                              opacity: activeId === product.id ? 1 : 0.6,
+                            }}
+                          >
+                            {product.price}
+                          </motion.p>
+                          <motion.p
+                            className="text-xs"
+                            animate={{
+                              opacity: activeId === product.id ? 1 : 0.6,
+                            }}
+                          >
+                            {product.description}
+                          </motion.p>
+                        </div>
                       </div>
-                      <div className="font-mono space-y-2">
-                        <motion.p
-                          className="text-xs"
-                          animate={{
-                            opacity: activeId === product.id ? 1 : 0.6,
-                          }}
-                        >
-                          {product.name}
-                        </motion.p>
-                        <motion.p
-                          className="text-xs"
-                          animate={{
-                            opacity: activeId === product.id ? 1 : 0.6,
-                          }}
-                        >
-                          {product.price}
-                        </motion.p>
-                        <motion.p
-                          className="text-xs"
-                          animate={{
-                            opacity: activeId === product.id ? 1 : 0.6,
-                          }}
-                        >
-                          {product.description}
-                        </motion.p>
-                      </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
 

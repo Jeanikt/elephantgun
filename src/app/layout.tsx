@@ -3,6 +3,7 @@
 import { ThemeProvider } from "./providers";
 import { useTheme } from "next-themes";
 import "./globals.css";
+import { CartProvider } from "./cart-context";
 
 export default function RootLayout({
   children,
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={theme || undefined}>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <CartProvider>{children}</CartProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
