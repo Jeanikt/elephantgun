@@ -254,7 +254,7 @@ export default function Component() {
             <div className="relative overflow-x-auto pb-8">
               <div className="flex space-x-4 md:space-x-8 min-w-max">
                 {products.map((product) => (
-                  <Link href={`/products/${product.id}`} key={product.id}>
+                  <Link href={`/products/`} key={product.id}>
                     <motion.div
                       className="relative flex-none"
                       onHoverStart={() => setActiveId(product.id)}
