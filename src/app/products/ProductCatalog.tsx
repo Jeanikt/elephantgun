@@ -416,7 +416,7 @@ export default function ProductCatalog() {
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -50, opacity: 0 }}
-                className="bg-white dark:bg-black p-8 rounded-lg max-w-lg w-full mx-4"
+                className="bg-white dark:bg-zinc-950 p-8 rounded-lg max-w-lg w-full mx-4"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Input
@@ -433,7 +433,7 @@ export default function ProductCatalog() {
                   {filteredProducts.map((product) => (
                     <div
                       key={product.id}
-                      className="flex items-center space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                      className="flex items-center space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer"
                       onClick={() => {
                         setSelectedProduct(product);
                         setIsSearchOpen(false);
