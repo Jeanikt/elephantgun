@@ -16,17 +16,6 @@ export default function Checkout() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/api/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: total, productName: "Eco Bag" }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, [total]);
-
   return (
     <div className="container mx-auto px-4 py-16">
       <h1 className="text-4xl font-mono mb-8">Checkout</h1>

@@ -36,7 +36,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
-import { Badge } from "@/components/ui/badge";
 
 import bag_messy from "../../../public/img/“MESSY”, BaG.jpg";
 import messy from "../../../public/img/“MESSY”.jpg";
@@ -87,7 +86,7 @@ export default function ProductCatalog() {
   const [selectedProduct, setSelectedProduct] = useState<
     (typeof products)[0] | null
   >(null);
-  const { addToCart, cart } = useCart();
+  const { addToCart } = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -191,18 +190,10 @@ export default function ProductCatalog() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="border-black dark:border-white relative"
+                  className="border-black dark:border-white"
                 >
                   <ShoppingCart className="h-[1.2rem] w-[1.2rem]" />
                   <span className="sr-only">View Cart</span>
-                  {cart.length > 0 && (
-                    <Badge
-                      variant="destructive"
-                      className="absolute -top-2 -right-2 px-2 py-1 text-xs"
-                    >
-                      {cart.length}
-                    </Badge>
-                  )}
                 </Button>
               </Link>
               <DropdownMenu open={isLangOpen} onOpenChange={setIsLangOpen}>
