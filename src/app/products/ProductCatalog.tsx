@@ -36,6 +36,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { Badge } from "@/components/ui/badge";
 
 import bag_messy from "../../../public/img/“MESSY”, BaG.jpg";
 import messy from "../../../public/img/“MESSY”.jpg";
@@ -86,7 +87,7 @@ export default function ProductCatalog() {
   const [selectedProduct, setSelectedProduct] = useState<
     (typeof products)[0] | null
   >(null);
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -190,10 +191,18 @@ export default function ProductCatalog() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="border-black dark:border-white"
+                  className="border-black dark:border-white relative"
                 >
                   <ShoppingCart className="h-[1.2rem] w-[1.2rem]" />
                   <span className="sr-only">View Cart</span>
+                  {cart.length > 0 && (
+                    <Badge
+                      variant="destructive"
+                      className="absolute -top-2 -right-2 px-2 py-1 text-xs"
+                    >
+                      {cart.length}
+                    </Badge>
+                  )}
                 </Button>
               </Link>
               <DropdownMenu open={isLangOpen} onOpenChange={setIsLangOpen}>
@@ -408,7 +417,7 @@ export default function ProductCatalog() {
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -50, opacity: 0 }}
-                className="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg max-w-lg w-full mx-4 shadow-xl"
+                className="bg-gray-50 dark:bg-zinc-950 p-8 rounded-lg max-w-lg w-full mx-4 shadow-xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Input
@@ -418,7 +427,7 @@ export default function ProductCatalog() {
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setSearchTerm(e.target.value)
                   }
-                  className="w-full mb-4 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-black dark:focus:ring-white"
+                  className="w-full mb-4 bg-white dark:bg-gray-800 border-gray-300 dark:border-zinc-800 focus:ring-2 focus:ring-black dark:focus:ring-white"
                   autoFocus
                 />
                 <div className="max-h-96 overflow-y-auto">
